@@ -85,6 +85,8 @@ local plugins = {
     end,
   },
 
+  ["p00f/nvim-ts-rainbow"] = {},
+
   -- git stuff
   ["lewis6991/gitsigns.nvim"] = {
     ft = "gitcommit",
@@ -142,11 +144,62 @@ local plugins = {
   ["hrsh7th/cmp-buffer"] = { after = "cmp-nvim-lsp" },
   ["hrsh7th/cmp-path"] = { after = "cmp-buffer" },
 
+  ["github/copilot.vim"] = {},
+
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    --after = "nvim-lspconfig",
+    config = function()
+      require "custom.plugins.null-ls"
+    end,
+  },
+
+  ["MunifTanjim/prettier.nvim"] = {
+    config = function()
+      require "custom.plugins.prettier"
+    end,
+  },
+
+  ["glepnir/lspsaga.nvim"] = {
+    config = function()
+      require "custom.plugins.lspsaga"
+    end,
+  },
+
+  ["stevearc/dressing.nvim"] = {},
+  ["ziontee113/icon-picker.nvim"] = {
+    config = function()
+      require("icon-picker").setup {
+        disable_legacy_commands = true,
+      }
+    end,
+  },
+
+  ["RRethy/vim-illuminate"] = {},
+
+  ["pantharshit00/coc-prisma"] = {},
+
+  ["pantharshit00/vim-prisma"] = {},
+
+  ["akinsho/toggleterm.nvim"] = {
+    cmd = "toggleterm",
+    config = function()
+      require "custom.plugins.toggleterm"
+    end,
+  },
+
+  -- load it after nvim-lspconfig cuz we lazy loaded lspconfig
   -- misc plugins
   ["windwp/nvim-autopairs"] = {
     after = "nvim-cmp",
     config = function()
       require("plugins.configs.others").autopairs()
+    end,
+  },
+
+  ["windwp/nvim-ts-autotag"] = {
+    after = "nvim-cmp",
+    config = function()
+      require "custom.plugins.autotags"
     end,
   },
 
